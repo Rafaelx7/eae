@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+    <title>IFSP</title>
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="icon/6974if.ico">
+    <link rel="stylesheet" type="text/css" href="principal.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        $(function() {
+            $("#dialog").dialog();
+            $("#datepicker").datepicker();
+        });
+    </script>
+
+    <object height="170px" width="100%" data="menu.html"></object>
+</head>
+
+<body>
+    <div id="result"></div>
+
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <a href="index.html">Principal</a>
+        </div>
+    </div>
+
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; ABRIR</span>
+
+    <article>
+        <p>Desenvolvimento web é o termo utilizado para descrever o desenvolvimento de sites, na Internet ou numa intranet. Este é o profissional que trabalha desenvolvendo websites, podendo ser um Web Designer (Desenvolvedor do Layout), ou Web Developer(Desenvolvedor
+            de sistemas). O desenvolvimento refere-se a um processo de construção e testes do software especifico para a web, com a finalidade de se obter um conjunto de programas, que satisfazem as funções pretendidas, quer em termos de usabilidade dos
+            usuários ou compatibilidade com outros programas existentes. O desenvolvimento web pode variar desde simples páginas estáticas a aplicações ricas, comércios eletrônicos ou redes sociais.</p>
+    </article>
+
+    <p>Date: <input type="text" id="datepicker"></p>
+
+    <br><br><br>
+
+    <div id="dialog" style="background-color:black">
+        <p style="text-decoration-color: blanchedalmond">Usando Widget Dialog, favor fechar no botão</p>
+    </div>
+
+    <h1 style="font-size: 40px; text-align: center">CSS font-family on center</h1>
+    <p style="font-family: 'Times New Roman', Times, serif" class="rcorners1">This is a paragraph, shown in the Times New Roman font.</p>
+
+    <div class="slideshow-container">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+            <img src="ifsp.png" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="ifspNew.jpg" style="width:100%">
+        </div>
+    </div>
+    <br>
+
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+
+
+    <form action="/action_page.php" method="post">
+        First name: <input type="text" name="fname"><br> Last name: <input type="text" name="lname"><br>
+        <input type="submit" value="Submit">
+        <input type="submit" formnovalidate value="Submit without validation">
+    </form>
+
+    <br>
+    <br>
+    <br>
+
+    <video controls>
+		<source src="videos/ifsp.mp4" type="video/mp4">
+		Your browser does not support HTML5 video.
+	</video>
+
+    <br>
+    <br>
+    <br>
+
+    <audio src="videos/soundfile.wav" controls>
+			<p>Seu navegador não suporta o elemento audio </p>
+	</audio>
+
+    <p>Clique aqui para coordenadas.</p>
+
+    <button onclick="getLocation()">Clique!</button>
+
+    <p id="demo"></p>
+</body>
+
+<footer>
+    <object height="50px" width="100%" data="footer.html"></object>
+</footer>
+
+</html>
+
+<script>
+    if (typeof(Storage) !== "undefined") {
+        // Store
+        localStorage.setItem("WebStorageSla", "WebStorage");
+        // Retrieve
+        document.getElementById("result").innerHTML = localStorage.getItem("WebStorageSla");
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+    }
+
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1
+        }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+    }
+
+    function openNav() {
+        document.getElementById("myNav").style.width = "100%";
+    }
+
+    function closeNav() {
+        document.getElementById("myNav").style.width = "0%";
+    }
+</script>
